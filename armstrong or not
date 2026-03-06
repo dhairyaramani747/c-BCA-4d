@@ -1,0 +1,30 @@
+﻿//write a program to check whether the number is armstrong or not.
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        int number, originalNumber, remainder, result = 0;
+
+        Console.Write("Enter a number: ");
+        number = Convert.ToInt32(Console.ReadLine());
+
+        originalNumber = number;
+
+        int digits = number.ToString().Length;
+
+        while (number != 0)
+        {
+            remainder = number % 10;
+            result += (int)Math.Pow(remainder, digits);
+            number /= 10;
+        }
+
+        if (result == originalNumber)
+            Console.WriteLine(originalNumber + " is an Armstrong number.");
+        else
+            Console.WriteLine(originalNumber + " is NOT an Armstrong number.");
+    }
+}
