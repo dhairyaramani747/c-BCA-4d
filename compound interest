@@ -1,0 +1,24 @@
+﻿using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        double p, r, y, a,ci;
+
+        Console.Write("Enter Principal Amount: ");
+        p = Convert.ToDouble(Console.ReadLine());
+
+        Console.Write("Enter Rate of Interest: ");
+        r = Convert.ToDouble(Console.ReadLine());
+
+        Console.Write("Enter Number of Years: ");
+        y = Convert.ToDouble(Console.ReadLine());
+
+        a=p * Math.Pow((1 + r / 100), y);
+        ci = a - p;
+
+        Console.WriteLine("Compound Interest: " + ci);
+        Console.WriteLine("Total Amount: " + a);
+    }
+}
