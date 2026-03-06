@@ -1,0 +1,13 @@
+﻿using System;
+using System.Security.Cryptography.X509Certificates;
+
+namespace Relation
+{
+    public class  Relation
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Enter th ")
+        }
+    }
+}
