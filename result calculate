@@ -1,0 +1,23 @@
+﻿using System;
+
+class Sum
+{
+    static void Main()
+    {
+        int sum = 0;
+        int number;
+
+        Console.WriteLine("ENTER THE 0 FOR THE RESULT");
+        Console.WriteLine("ENTER THE NUMBERS:");
+
+        number = int.Parse(Console.ReadLine());
+
+        while (number != 0)
+        { 
+            sum = sum + number;
+            number = int.Parse(Console.ReadLine());
+        }
+
+        Console.WriteLine("The sum is: " + sum);
+    }
+}
