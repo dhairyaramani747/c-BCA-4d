@@ -1,0 +1,40 @@
+﻿using System;
+
+class Program
+{
+    static void Main()
+    {
+        double units, bill, discount = 0;
+        string category;
+
+        Console.Write("Enter units consumed: ");
+        units = Convert.ToDouble(Console.ReadLine());
+
+        Console.Write("Enter customer category (senior / regular / industrial): ");
+        category = Console.ReadLine();
+
+        bill = units * 5;   
+
+        if (category == "senior")
+        {
+            discount = bill * 0.20;   
+        }
+        else if (category == "regular")
+        {
+            discount = bill * 0.10;   
+        }
+        else if (category == "industrial")
+        {
+            discount = bill * 0.05;   
+        }
+        else
+        {
+            Console.WriteLine("Invalid category");
+            return;
+        }
+
+        Console.WriteLine("Total Bill: " + bill);
+        Console.WriteLine("Discount: " + discount);
+        Console.WriteLine("Final Bill: " + (bill - discount));
+    }
+}
