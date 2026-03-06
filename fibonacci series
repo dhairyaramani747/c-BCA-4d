@@ -1,0 +1,27 @@
+using System;
+
+class Fibonacci
+{
+    static void Main(string[] args)
+
+    {
+        int a;
+
+        Console.WriteLine("enter the number");
+        a = Convert.ToInt32(Console.ReadLine());
+
+        int n1 = 0, n2 = 1, n3;
+        Console.Write("fibinacci series of " + a + "is :");
+        for (int i = 0; i <= a; i++)
+        {
+            n3 = n1 + n2;
+            Console.Write(n3 + " ");
+            n1 = n2; 
+            n2 = n3;
+        }
+
+
+
+
+    }
+}
