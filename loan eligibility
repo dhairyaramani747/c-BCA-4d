@@ -1,0 +1,46 @@
+using System;
+
+class LoanEligibility
+{
+    static void Main()
+    {
+        int age;
+        double income;
+        int creditScore;
+
+        Console.Write("Enter your age: ");
+        age = Convert.ToInt32(Console.ReadLine());
+
+        Console.Write("Enter your monthly income: ");
+        income = Convert.ToDouble(Console.ReadLine());
+
+        Console.Write("Enter your credit score: ");
+        creditScore = Convert.ToInt32(Console.ReadLine());
+
+        // Check loan eligibility using nested conditions
+        if (age >= 21 && age <= 60)
+        {
+            if (income >= 25000)
+            {
+                if (creditScore >= 650)
+                {
+                    Console.WriteLine("Congratulations! You are eligible for the loan.");
+                }
+                else
+                {
+                    Console.WriteLine("Not eligible: Credit score is too low.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Not eligible: Income is too low.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Not eligible: Age must be between 21 and 60.");
+        }
+
+        Console.ReadLine();
+    }
+}
