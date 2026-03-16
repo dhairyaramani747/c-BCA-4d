@@ -1,0 +1,36 @@
+using System;
+
+class ATM
+{
+    static void Main()
+    {
+        int correctPin = 1234;
+        double balance = 5000;
+
+        Console.Write("Enter PIN: ");
+        int enteredPin = Convert.ToInt32(Console.ReadLine());
+
+        if (enteredPin == correctPin)
+        {
+            Console.Write("Enter amount to withdraw: ");
+            double amount = Convert.ToDouble(Console.ReadLine());
+
+            if (amount <= balance)
+            {
+                balance -= amount;
+                Console.WriteLine("Withdrawal successful!");
+                Console.WriteLine("Remaining Balance: " + balance);
+            }
+            else
+            {
+                Console.WriteLine("Insufficient balance.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Incorrect PIN.");
+        }
+
+        Console.ReadLine();
+    }
+}
