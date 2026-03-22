@@ -1,0 +1,50 @@
+using System;
+
+class PasswordValidation
+{
+    static void Main()
+    {
+        string password;
+
+        while (true)
+        {
+            Console.Write("Enter your password: ");
+            password = Console.ReadLine();
+
+            bool hasUpper = false;
+            bool hasLower = false;
+            bool hasDigit = false;
+
+            if (password.Length < 8)
+            {
+                Console.WriteLine("Password must be at least 8 characters long.\n");
+                continue;
+            }
+                
+            foreach (char ch in password)
+            {
+                if (char.IsUpper(ch)) hasUpper = true;
+                if (char.IsLower(ch)) hasLower = true;
+                if (char.IsDigit(ch)) hasDigit = true;
+            }
+
+            if (!hasUpper)
+            {
+                Console.WriteLine("Password must contain at least one uppercase letter.\n");
+            }
+            else if (!hasLower)
+            {
+                Console.WriteLine("Password must contain at least one lowercase letter.\n");
+            }
+            else if (!hasDigit)
+            {
+                Console.WriteLine("Password must contain at least one digit.\n");
+            }
+            else
+            {
+                Console.WriteLine("Password is valid!");
+                break;
+            }
+        }
+    }
+}
