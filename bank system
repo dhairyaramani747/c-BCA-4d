@@ -1,0 +1,128 @@
+using System;
+
+// Base Class
+class Account
+{
+    public string AccNo;
+    public double Balance;
+
+    public Account(string accNo, double balance)
+    {
+        AccNo = accNo;
+        Balance = balance;
+    }
+
+    public virtual void Deposit(double amount)
+    {
+        Balance += amount;
+        Console.WriteLine($"Deposited: {amount}. New Balance: {Balance}");
+    }
+
+    public virtual void Withdraw(double amount)
+    {
+        if (amount <= Balance)
+        {
+            Balance -= amount;
+            Console.WriteLine($"Withdrawn: {amount}. New Balance: {Balance}");
+        }
+        else
+        {
+            Console.WriteLine("Insufficient funds!");
+        }
+    }
+
+    public virtual void Display()
+    {
+        Console.WriteLine($"\nAccount: {AccNo}\nBalance: {Balance}");
+    }
+}
+
+// Derived Class: Savings
+class SavingsAccount : Account
+{
+    public double InterestRate;
+
+    public SavingsAccount(string accNo, double balance, double interestRate) 
+        : base(accNo, balance)
+    {
+        InterestRate = interestRate;
+    }
+
+    public override void Display()
+    {
+        base.Display();
+        Console.WriteLine($"Interest Rate: {InterestRate}%");
+    }
+}
+
+// Derived Class: Current
+class CurrentAccount : Account
+{
+    public double OverdraftLimit;
+
+    public CurrentAccount(string accNo, double balance, double overdraftLimit) 
+        : base(accNo, balance)
+    {
+        OverdraftLimit = overdraftLimit;
+    }
+
+    // Overriding Withdraw to include Overdraft Logic
+    public override void Withdraw(double amount)
+    {
+        if (amount <= (Balance + OverdraftLimit))
+        {
+            Balance -= amount;
+            Console.WriteLine($"Withdrawn: {amount}. New Balance: {Balance}");
+        }
+        else
+        {
+            Console.WriteLine("Overdraft limit exceeded!");
+        }
+    }
+
+    public override void Display()
+    {
+        base.Display();
+        Console.WriteLine($"Overdraft Limit: {OverdraftLimit}");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Enter Account Type (Savings/Current): ");
+        string type = Console.ReadLine().ToLower();
+
+        Console.Write("Enter Account Number: ");
+        string no = Console.ReadLine();
+
+        Console.Write("Enter Initial Balance: ");
+        double bal = Convert.ToDouble(Console.ReadLine());
+
+        Account userAccount;
+
+        if (type == "savings")
+        {
+            Console.Write("Enter Interest Rate (%): ");
+            double rate = Convert.ToDouble(Console.ReadLine());
+            userAccount = new SavingsAccount(no, bal, rate);
+        }
+        else
+        {
+            Console.Write("Enter Overdraft Limit: ");
+            double limit = Convert.ToDouble(Console.ReadLine());
+            userAccount = new CurrentAccount(no, bal, limit);
+        }
+
+        userAccount.Display();
+
+        Console.Write("\nEnter amount to deposit: ");
+        userAccount.Deposit(Convert.ToDouble(Console.ReadLine()));
+
+        Console.Write("Enter amount to withdraw: ");
+        userAccount.Withdraw(Convert.ToDouble(Console.ReadLine()));
+
+        userAccount.Display();
+    }
+}
