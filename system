@@ -1,6 +1,4 @@
 using System;
-
-// Base Class
 class Account
 {
     public string AccNo;
@@ -36,8 +34,6 @@ class Account
         Console.WriteLine($"\nAccount: {AccNo}\nBalance: {Balance}");
     }
 }
-
-// Derived Class: Savings
 class SavingsAccount : Account
 {
     public double InterestRate;
@@ -54,8 +50,6 @@ class SavingsAccount : Account
         Console.WriteLine($"Interest Rate: {InterestRate}%");
     }
 }
-
-// Derived Class: Current
 class CurrentAccount : Account
 {
     public double OverdraftLimit;
@@ -66,7 +60,6 @@ class CurrentAccount : Account
         OverdraftLimit = overdraftLimit;
     }
 
-    // Overriding Withdraw to include Overdraft Logic
     public override void Withdraw(double amount)
     {
         if (amount <= (Balance + OverdraftLimit))
