@@ -1,0 +1,41 @@
+using System;
+
+interface IExam
+{
+    bool Pass(int mark);
+}
+interface IClassify
+{
+    string Division(int average);
+}
+
+class Result : IExam, IClassify
+{
+    public bool Pass(int mark)
+    {
+        return mark >= 50;
+    }
+
+    public string Division(int average)
+    {
+        if (average >= 60)
+            return "First";
+        else if (average >= 50)
+            return "Second";
+        else
+            return "No division";
+    }
+}
+class Program
+{
+    static void Main()
+    {
+        Result studentResult = new Result();
+        
+        int score = 65;
+        
+        Console.WriteLine($"Mark: {score}");
+        Console.WriteLine($"Passed: {studentResult.Pass(score)}");
+        Console.WriteLine($"Division: {studentResult.Division(score)}");
+    }
+}
