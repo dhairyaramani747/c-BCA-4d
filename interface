@@ -1,0 +1,52 @@
+using System;
+interface IExam
+{
+    bool Pass(int mark);
+}
+interface IResult
+{
+    string Division(int average);
+}
+class Student : IExam, IResult
+{
+    public bool Pass(int mark)
+    {
+        return mark >= 50;
+    }
+    public string Division(int average)
+    {
+        if (average >= 75)
+        {
+            return "First Division with Distinction";
+        }
+        else if (average >= 60)
+        {
+            return "First Division";
+        }
+        else if (average >= 50)
+        {
+            return "Second Division";
+        }
+        else
+        {
+            return "Third Division / Fail";
+        }
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Student s = new Student();
+
+        int myMark = 55;
+        int myAverage = 68;
+
+        Console.WriteLine($"Mark: {myMark}");
+        Console.WriteLine($"Passed: {s.Pass(myMark)}");
+
+        Console.WriteLine($"\nAverage: {myAverage}");
+        Console.WriteLine($"Result: {s.Division(myAverage)}");
+    }
+}
